@@ -2145,17 +2145,19 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     axios.get('/api/tasks').then(function (response) {
-      return console.log(response);
+      return _this.tasks = response.data.data;
     });
   },
   methods: {
     deleteTask: function deleteTask(id) {
-      var _this = this;
+      var _this2 = this;
 
       var uri = "/api/task/delete/".concat(id);
       this.axios["delete"](uri).then(function (response) {
-        _this.tasks.splice(_this.tasks.indexOf(id), 1);
+        _this2.tasks.splice(_this2.tasks.indexOf(id), 1);
       });
     }
   }
@@ -53970,8 +53972,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/ubuntu/environment/portfolio/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/ubuntu/environment/portfolio/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/masato/Desktop/php-projects/portfolio-collect/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/masato/Desktop/php-projects/portfolio-collect/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -40,7 +40,7 @@ export default {
         }
     },
   mounted: function(){
-    axios.get('/api/tasks').then(response => console.log(response))
+    axios.get('/api/tasks').then(response => this.tasks = response.data.data)
   },
     methods: {
         deleteTask(id)
