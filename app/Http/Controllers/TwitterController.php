@@ -22,13 +22,13 @@ class TwitterController extends Controller
         }
         // 各自ログイン処理
         // 例
-        // $user = User::where('auth_id', $twitterUser->id)->first();
-        // if (!$user) {
-        //     $user = User::create([
-        //         'auth_id' => $twitterUser->id
-        //   ]);
-        // }
-        // Auth::login($user);
+        $user = User::where('auth_id', $twitterUser->id)->first();
+        if (!$user) {
+            $user = User::create([
+                'auth_id' => $twitterUser->id
+          ]);
+        }
+        Auth::login($user);
         return redirect('/');
     }
 
@@ -37,7 +37,7 @@ class TwitterController extends Controller
     {
         // 各自ログアウト処理
         // 例
-        // Auth::logout();
+        Auth::logout();
         return redirect('/');
     }
 }

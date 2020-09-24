@@ -30,10 +30,3 @@ Route::get('/post/edit/{id}', 'App\Http\Controllers\PostController@edit');
 Route::post('/post/update/{id}', 'App\Http\Controllers\PostController@update');
 Route::delete('/post/delete/{id}', 'App\Http\Controllers\PostController@delete');
 Route::get('/posts', 'App\Http\Controllers\PostController@index');
-
-// ログインURL
-Route::get('auth/twitter', 'App\Http\Controllers\TwitterController@redirectToProvider');
-// コールバックURL
-Route::get('auth/twitter/callback', 'App\Http\Controllers\TwitterController@handleProviderCallback');
-// ログアウトURL
-Route::get('auth/twitter/logout', 'App\Http\Controllers\TwitterController@logout');
