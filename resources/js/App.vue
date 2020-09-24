@@ -12,6 +12,8 @@
                     <router-link to="/tasks" class="nav-link">Tasks</router-link>
                 </li>
             </ul>
+            <a href="/auth/twitter">ログイン</a>
+            <a href="/auth/twitter/logout">ログアウト</a>
         </nav>
         <router-view></router-view>
     </div>

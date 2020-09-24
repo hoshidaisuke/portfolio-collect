@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>Poszzzzts</h1>
+    <h1>Posts</h1>
     <div class="row">
         <div class="col-md-10"></div>
         <div class="col-md-2">
@@ -39,9 +39,9 @@ export default {
             tasks: []
         }
     },
-  mounted: function(){
-    axios.get('/api/tasks').then(response => console.log(response))
-  },
+    mounted: function(){
+        axios.get('/api/tasks').then(response => this.tasks = response.data.data)
+    },
     methods: {
         deleteTask(id)
         {

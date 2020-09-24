@@ -1927,6 +1927,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
@@ -1971,21 +1973,58 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      task: {}
+      post: {},
+      link: ''
     };
   },
   methods: {
-    addTask: function addTask() {
+    addPost: function addPost() {
       var _this = this;
 
-      console.log(this.task);
-      var uri = '/api/task/create';
-      this.axios.post(uri, this.task).then(function (response) {
+      console.log(this.post);
+      var uri = '/api/post/create';
+      this.axios.post(uri, this.post).then(function (response) {
         _this.$router.push({
-          name: 'tasks'
+          name: 'posts'
         });
       });
     }
@@ -2145,17 +2184,19 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     axios.get('/api/tasks').then(function (response) {
-      return console.log(response);
+      return _this.tasks = response.data.data;
     });
   },
   methods: {
     deleteTask: function deleteTask(id) {
-      var _this = this;
+      var _this2 = this;
 
       var uri = "/api/task/delete/".concat(id);
       this.axios["delete"](uri).then(function (response) {
-        _this.tasks.splice(_this.tasks.indexOf(id), 1);
+        _this2.tasks.splice(_this2.tasks.indexOf(id), 1);
       });
     }
   }
@@ -37805,6 +37846,12 @@ var render = function() {
               ],
               1
             )
+          ]),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "/auth/twitter" } }, [_vm._v("ログイン")]),
+          _vm._v(" "),
+          _c("a", { attrs: { href: "/auth/twitter/logout" } }, [
+            _vm._v("ログアウト")
           ])
         ]
       ),
@@ -37845,7 +37892,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.addTask($event)
+            return _vm.addPost($event)
           }
         }
       },
@@ -37853,52 +37900,26 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-6" }, [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Task Title:")]),
+              _c("label", [_vm._v("ユーザ:")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.task.title,
-                    expression: "task.title"
+                    value: _vm.post.user_id,
+                    expression: "post.user_id"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: _vm.task.title },
+                domProps: { value: _vm.post.user_id },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.task, "title", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Task Deadline:")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.task.deadline,
-                    expression: "task.deadline"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "date" },
-                domProps: { value: _vm.task.deadline },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.task, "deadline", $event.target.value)
+                    _vm.$set(_vm.post, "user_id", $event.target.value)
                   }
                 }
               })
@@ -37909,26 +37930,176 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-6" }, [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Task Comment:")]),
+              _c("label", [_vm._v("ポートフォリオURL:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.post.portfolio,
+                    expression: "post.portfolio"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "url" },
+                domProps: { value: _vm.post.portfolio },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.post, "portfolio", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Twitterのポートフォリオ投稿URL:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.post.twitter,
+                    expression: "post.twitter"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "url" },
+                domProps: { value: _vm.post.twitter },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.post, "twitter", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("使用した技術・言語:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.post.lang,
+                    expression: "post.lang"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.post.lang },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.post, "lang", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("制作期間:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.post.term,
+                    expression: "post.term"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.post.term },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.post, "term", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("学習方法:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.post.method,
+                    expression: "post.method"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.post.method },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.post, "method", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("アピールポイント:")]),
               _vm._v(" "),
               _c("textarea", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.task.comment,
-                    expression: "task.comment"
+                    value: _vm.post.appeal,
+                    expression: "post.appeal"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { rows: "5" },
-                domProps: { value: _vm.task.comment },
+                domProps: { value: _vm.post.appeal },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.task, "comment", $event.target.value)
+                    _vm.$set(_vm.post, "appeal", $event.target.value)
                   }
                 }
               })
@@ -38152,7 +38323,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Poszzzzts")]),
+    _c("h1", [_vm._v("Posts")]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-10" }),
