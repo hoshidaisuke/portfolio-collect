@@ -103,18 +103,16 @@ class SocialAuthController extends Controller
      * @param $providerUser
      * @return User
      */
-    private function findOrCreateUser($providerUser, $provider)
-    {
-        $authUser = User::where('provider_id', $providerUser->getId())->first();
-        if ($authUser) {
+    private function findOrCreateUser($twitterUser){
+        $authUser = User::where('twitter_id', $twitterUser->id)->first();
+        if ($authUser){
             return $authUser;
         }
+        var_dump(1);
         return User::create([
-            'name' => $providerUser->getName(),
-            'provider_id' => $providerUser->getId(),
-            'email' => $providerUser->getEmail(),
-            'avatar' => $providerUser->getAvatar(),
-            'provider' => $provider,
+            'nickname' => $twitterUser->nickname,
+            'twitter_id' => $twitterUser->id,
+            'avatar' => $twitterUser->avatar_origina
         ]);
     }
 
