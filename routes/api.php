@@ -29,4 +29,4 @@ Route::post('/post/create', 'App\Http\Controllers\PostController@store');
 Route::get('/post/edit/{id}', 'App\Http\Controllers\PostController@edit');
 Route::post('/post/update/{id}', 'App\Http\Controllers\PostController@update');
 Route::delete('/post/delete/{id}', 'App\Http\Controllers\PostController@delete');
-Route::get('/posts', 'App\Http\Controllers\PostController@index');
+Route::get('/', 'App\Http\Controllers\PostController@index');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Laravel\Socialite\Facades\Socialite;
 
 class PostController extends Controller
 {
@@ -14,7 +15,12 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $user = Socialite::driver('twitter')->user();
+        // $posts = Post::all();
+        return view('index',[
+            // 'posts' => $posts,
+            'user' => $user
+        ]);
     }
 
     /**

@@ -105,6 +105,7 @@ class SocialAuthController extends Controller
      */
     private function findOrCreateUser($twitterUser){
         $authUser = User::where('twitter_id', $twitterUser->id)->first();
+        dd($authUser);
         if ($authUser){
             return $authUser;
         }

@@ -2177,28 +2177,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+// import { Tweet } from 'vue-tweet-embed'
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      tasks: []
+      posts: []
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios.get('/api/tasks').then(function (response) {
-      return _this.tasks = response.data.data;
-    });
+  mounted: function mounted() {// axios.get('/api/posts').then(response => this.posts = response.data.data)
   },
-  methods: {
-    deleteTask: function deleteTask(id) {
-      var _this2 = this;
-
-      var uri = "/api/task/delete/".concat(id);
-      this.axios["delete"](uri).then(function (response) {
-        _this2.tasks.splice(_this2.tasks.indexOf(id), 1);
-      });
-    }
+  methods: {// deletePost(id)
+    // {
+    //     const uri = `/api/post/delete/${id}`;
+    //     this.axios.delete(uri).then(response => {
+    //         this.posts.splice(this.posts.indexOf(id), 1);
+    //     });
+    // }
   }
 });
 
@@ -37897,35 +37892,7 @@ var render = function() {
         }
       },
       [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("ユーザ:")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.post.user_id,
-                    expression: "post.user_id"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text" },
-                domProps: { value: _vm.post.user_id },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.post, "user_id", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ])
-        ]),
+        _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-6" }, [
@@ -38107,12 +38074,24 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _vm._m(1)
       ]
     )
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-6" }, [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("ユーザ:")])
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38345,56 +38324,7 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("table", { staticClass: "table table-hover" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c(
-        "tbody",
-        _vm._l(_vm.tasks, function(task) {
-          return _c("tr", { key: task.id }, [
-            _c("td", [_vm._v(_vm._s(task.id))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(task.title))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(task.deadline))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(task.comment))]),
-            _vm._v(" "),
-            _c(
-              "td",
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { to: { name: "edit", params: { id: task.id } } }
-                  },
-                  [_vm._v("Edit")]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("td", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-danger",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.deleteTask(task.id)
-                    }
-                  }
-                },
-                [_vm._v("Delete")]
-              )
-            ])
-          ])
-        }),
-        0
-      )
-    ])
+    _vm._m(0)
   ])
 }
 var staticRenderFns = [
@@ -38402,19 +38332,21 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Task")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Deadline")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Comment")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Edit")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Delete")])
+    return _c("table", { staticClass: "table table-hover" }, [
+      _c("thead", [
+        _c("tr", [
+          _c("th", [_vm._v("ポートフォリオ")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("Twitter")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("使用した技術・言語")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("制作期間")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("学習方法")]),
+          _vm._v(" "),
+          _c("th", [_vm._v("アピールポイント")])
+        ])
       ])
     ])
   }
@@ -53770,9 +53702,9 @@ Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_1___default.a, axios__WEBPACK_IMPORTE
 
 
 var routes = [{
-  name: 'home',
+  name: 'index',
   path: '/',
-  component: _components_HomeComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _components_IndexComponent_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
   name: 'create',
   path: '/create',

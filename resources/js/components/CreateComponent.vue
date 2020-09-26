@@ -6,7 +6,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>ユーザ:</label>
-                        <input type="text" class="form-control" v-model="post.user_id">
+                        <!--<input type="text" class="form-control" v-model="post.user_id">-->
                     </div>
                 </div>
             </div>

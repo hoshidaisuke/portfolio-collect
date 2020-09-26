@@ -7,49 +7,52 @@
             <router-link :to="{ name: 'create' }" class="btn btn-primary">Create Task</router-link>
         </div>
     </div>
+
+<!--<Tweet id="1309750313499279361"></Tweet>-->
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Task</th>
-            <th>Deadline</th>
-            <th>Comment</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>ポートフォリオ</th>
+            <th>Twitter</th>
+            <th>使用した技術・言語</th>
+            <th>制作期間</th>
+            <th>学習方法</th>
+            <th>アピールポイント</th>
         </tr>
         </thead>
-        <tbody>
-            <tr v-for="task in tasks" :key="task.id">
-                <td>{{ task.id }}</td>
-                <td>{{ task.title }}</td>
-                <td>{{ task.deadline }}</td>
-                <td>{{ task.comment }}</td>
-                <td><router-link :to="{name: 'edit', params: { id: task.id }}" class="btn btn-primary">Edit</router-link></td>
-                <td><button class="btn btn-danger" @click.prevent="deleteTask(task.id)">Delete</button></td>
-            </tr>
-        </tbody>
+        <!--<tbody>-->
+        <!--    <tr v-for="post in posts">-->
+        <!--        <td>{{ post.portfolio }}</td>-->
+        <!--        <td>{{ post.twitter }}</td>-->
+        <!--        <td>{{ post.lang }}</td>-->
+        <!--        <td>{{ post.term }}</td>-->
+        <!--        <td>{{ post.method }}</td>-->
+        <!--        <td>{{ post.appeal }}</td>-->
+        <!--    </tr>-->
+        <!--</tbody>-->
     </table>
 </div>
 </template>
-
 <script>
+// import { Tweet } from 'vue-tweet-embed'
+
 export default {
     data() {
         return {
-            tasks: []
+            posts: []
         }
     },
     mounted: function(){
-        axios.get('/api/tasks').then(response => this.tasks = response.data.data)
+        // axios.get('/api/posts').then(response => this.posts = response.data.data)
     },
     methods: {
-        deleteTask(id)
-        {
-            const uri = `/api/task/delete/${id}`;
-            this.axios.delete(uri).then(response => {
-                this.tasks.splice(this.tasks.indexOf(id), 1);
-            });
-        }
+        // deletePost(id)
+        // {
+        //     const uri = `/api/post/delete/${id}`;
+        //     this.axios.delete(uri).then(response => {
+        //         this.posts.splice(this.posts.indexOf(id), 1);
+        //     });
+        // }
     }
 }
 </script>

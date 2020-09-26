@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            // $table->unsignedBigInteger('user_id');
             $table->string('lang');
             $table->string('term');
             $table->string('method');
@@ -24,8 +24,8 @@ class CreatePostsTable extends Migration
             $table->string('twitter');
             $table->timestamps();
 
-            // 外部キー制約
-            $table->foreign('user_id')->references('id')->on('users');
+            // // 外部キー制約
+            // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
